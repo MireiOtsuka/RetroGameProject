@@ -8,6 +8,7 @@ public class Title : MonoBehaviour
     [SerializeField] GameObject menu;
     [SerializeField] GameObject operation;
     [SerializeField] GameObject operationUI;
+    [SerializeField] GameObject rulePanel;
     [SerializeField] GameObject rule1;
     [SerializeField] GameObject rule2;
     // Start is called before the first frame update
@@ -41,6 +42,7 @@ public class Title : MonoBehaviour
     public void RuleButton()
     {
         menu.SetActive(false);
+        rulePanel.SetActive(true);
         rule1.SetActive(true);
         rule2.SetActive(false);
     }
@@ -61,6 +63,7 @@ public class Title : MonoBehaviour
         menu.SetActive(true);
         operation.SetActive(false);
         operationUI.SetActive(false);
+        rulePanel.SetActive(false);
         rule1.SetActive(false);
         rule2.SetActive(false);
     }
@@ -69,6 +72,7 @@ public class Title : MonoBehaviour
     {
         operation.SetActive(false);
         operationUI.SetActive(false);
+        rulePanel.SetActive(false);
         //シーン移行
         SceneManager.LoadScene("Game_Retro2D");
     }

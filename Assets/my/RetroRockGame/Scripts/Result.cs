@@ -10,7 +10,8 @@ public class Result : MonoBehaviour
     // ゲームのリザルト画面管理
     [SerializeField] GameObject clearObj;
     [SerializeField] GameObject overObj;
-
+    [SerializeField] Text socoreText;
+    //コンティニューフラグ
     bool gameContinue;
     
     void Start()
@@ -22,7 +23,10 @@ public class Result : MonoBehaviour
         {
             overObj.SetActive(true);
         }
-        Debug.Log("リザルト状態："+RetroPL.nowMode);
+        //RetroPLからscoreの値を読み込む
+        int resultSrore = RetroPL.ScoreCount();
+        //scoreTextにリザルトスコアを表示
+        socoreText.text = resultSrore.ToString();
     }
 
     // Update is called once per frame

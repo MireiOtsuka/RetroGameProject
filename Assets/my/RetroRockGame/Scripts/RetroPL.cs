@@ -12,6 +12,7 @@ public class RetroPL : MonoBehaviour
 
     public static int level = 1;//レベル
     public static int[] clearCapa = { 5, 10, 20 };//レベル別クリア人数
+    public static int[] times = { 5, 10, 20 };//レベル別追加時間
 
     float speed = 5.0f;//移動のスピード
     bool isGround = false;//接地判定
@@ -46,12 +47,22 @@ public class RetroPL : MonoBehaviour
         
         //ゲームスタート時アクションモードでスタート
         nowMode = PlayerMode.action;
-        //HP初期化
-        HP = 4;
-        //クリア人数初期化
-        clearCount = 0;
-        //制限時間
-        time = 100;
+        if (level == 1) {
+            //HP初期化
+            HP = 4;
+            //クリア人数初期化
+            clearCount = 0;
+            //制限時間
+            time = 100 + times[level - 1];
+        }
+        else
+        {
+            //HPは引き継ぐ
+            //クリア人数初期化
+            clearCount = 0;
+            //制限時間
+            time += times[level - 1];
+        }
     }
 
     // Update is called once per frame
@@ -207,8 +218,13 @@ public class RetroPL : MonoBehaviour
         //規定人数満たしたらクリア
         if (clearCapa[level - 1] == clearCount)
         {
+            //1面クリアごとにスコア加算
+            //基礎ポイント＋時間ポイント
+            score += 1000 * level+(int)time*10;
             //モード変更
             nowMode = PlayerMode.gameclear;
+            //レベルを上げる
+            level++;
             //シーン移行の関数呼び出し
             StartCoroutine("GoResult");
         }
@@ -232,4 +248,22 @@ public class RetroPL : MonoBehaviour
         //リザルト画面に移動
         SceneManager.LoadScene("Result_Retro2D");
     }
+
+    /// <summary>
+    /// プロパティーで値(ゲームスコア)を渡す
+    /// </summary>
+    /// <returns>Scoreの値</returns>
+    public static int ScoreCount()
+    {
+        return score;
+    }
+    /// <summary>
+    /// レベルの値を返す
+    /// </summary>
+    /// <returns></returns>
+    public static int LevelCount() {
+        return level;
+
+    }
+
 }
