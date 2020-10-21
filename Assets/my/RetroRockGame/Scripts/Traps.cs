@@ -9,12 +9,14 @@ public class Traps : MonoBehaviour
 
     [SerializeField] GameObject rockPrefab;//岩オブジェクト
 
-    float rockSpan = 1.0f;//岩が落ちる感覚
+    float[] rockSpans = {1.0f,0.6f,0.4f};//岩が落ちる感覚(レベル別)
     float rockNowTime = 0;//岩タイマー
-    
+    //現在のレベル
+    int level;
     void Start()
     {
-        
+        //RetroPL.csからレベルを取得
+        level = RetroPL.LevelCount();
     }
 
     // Update is called once per frame
@@ -22,7 +24,7 @@ public class Traps : MonoBehaviour
     {
         //岩の処理ーーーーー
         this.rockNowTime += Time.deltaTime;
-        if (rockNowTime > rockSpan)
+        if (rockNowTime > rockSpans[level-1])
         {
             //タイマーリセット
             rockNowTime = 0;
@@ -34,5 +36,5 @@ public class Traps : MonoBehaviour
         }
        
     }
-    
+    //時間があれば落ちる速さをいじってもよさそう....
 }

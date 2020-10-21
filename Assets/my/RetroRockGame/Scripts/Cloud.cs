@@ -10,6 +10,11 @@ public class Cloud : MonoBehaviour
     Thunder thunder;//Thunder.cs取得
     private GameObject thunderObj;//雷(子オブジェクト)
 
+    //ランダムで雷タイマーの時間の範囲を格納するレベル別配列
+    float[] thMinSpans = { 5f, 3.5f, 2f };//最小値
+    float[] thMaxSpans = { 10f, 8f, 5f };//最大値
+
+    int level;//現在のレベル
     float cloudSpans;//雷が落ちる感覚
     float cloudNowTimes;//雷タイマー
 
@@ -21,8 +26,10 @@ public class Cloud : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        //現在のレベルを取得
+        level = RetroPL.LevelCount();
         //ランダムで雷タイマーの時間を決める
-        cloudSpans = Random.Range(5f, 10f);
+        cloudSpans = Random.Range(thMinSpans[level-1], thMaxSpans[level-1]);
         //タイマー初期化
         cloudNowTimes = 0f;
         //アニメーションフラグをfalseにする
@@ -49,7 +56,7 @@ public class Cloud : MonoBehaviour
             //タイマーリセット
             cloudNowTimes = 0;
             //ランダムで雷タイマーの時間を決める
-            cloudSpans = Random.Range(5f, 20f);
+            cloudSpans = Random.Range(thMinSpans[level - 1], thMaxSpans[level - 1]);
             //Shot関数呼び出し
             StartCoroutine("Shot");
         }

@@ -24,6 +24,8 @@ public class UImain : MonoBehaviour
 
     void Start()
     {
+        //定員表示
+        capa.text = RetroPL.clearCapa[(RetroPL.level) - 1].ToString();
     }
 
     // Update is called once per frame
@@ -42,8 +44,6 @@ public class UImain : MonoBehaviour
             RetroPL.nowMode = RetroPL.PlayerMode.gameover;
         }
 
-        //定員表示
-        capa.text = RetroPL.clearCapa[(RetroPL.level) - 1].ToString();
         //現在のクリア人数表示
         clearPerson.text = RetroPL.clearCount.ToString();
         //スコアの表示

@@ -11,7 +11,7 @@ public class RetroPL : MonoBehaviour
     Animator anim;
 
     public static int level = 1;//レベル
-    public static int[] clearCapa = { 5, 10, 20 };//レベル別クリア人数
+    public static int[] clearCapa = { 1, 2, 20 };//レベル別クリア人数
     public static int[] times = { 5, 10, 20 };//レベル別追加時間
 
     float speed = 5.0f;//移動のスピード
@@ -47,25 +47,27 @@ public class RetroPL : MonoBehaviour
         
         //ゲームスタート時アクションモードでスタート
         nowMode = PlayerMode.action;
+        //レベル1の時はすべて初期化
         if (level == 1) {
             //HP初期化
             HP = 4;
             //クリア人数初期化
             clearCount = 0;
+            //スコア
+            score = 0;
             //制限時間
             time = 100 + times[level - 1];
         }
         else
-        {
+        {   //レベル2以降はclearCountのみ初期化
             //HPは引き継ぐ
             //クリア人数初期化
             clearCount = 0;
-            //制限時間
+            //制限時間を付け足す
             time += times[level - 1];
         }
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         //ゲームオーバー
@@ -73,6 +75,8 @@ public class RetroPL : MonoBehaviour
         {   //ダメージを受けて死ぬ場合
             if (HP == 0)
             {
+                //レベル1に戻す
+                level = 1;
                 //すぐに移行はしてほしくない
                 anim.SetBool("GameOver", true);
             }
@@ -124,7 +128,6 @@ public class RetroPL : MonoBehaviour
             //ジャンプ
             rb2d.AddForce(Vector2.up * 300f);
         }
-        
     }
 
     /// <summary>
@@ -139,7 +142,6 @@ public class RetroPL : MonoBehaviour
         {
             //HPを1引く
             HP--;
-            Debug.Log("HP:" + HP);
             //ぶつかったアニメーション再生
             anim.SetTrigger("rockDamage");
             //PLAnimation()に飛ぶ
@@ -147,7 +149,6 @@ public class RetroPL : MonoBehaviour
             //ダメージ状態に移行
             nowMode = PlayerMode.damage;
         }
-        
     }
     
     /// <summary>
@@ -169,7 +170,6 @@ public class RetroPL : MonoBehaviour
         {
             //HPを1引く
             HP--;
-            Debug.Log("HP:" + HP);
             //うたれたアニメーション再生
             anim.SetTrigger("thunderDamage");
             //PLAnimation()に飛ぶ
@@ -201,7 +201,6 @@ public class RetroPL : MonoBehaviour
         if (HP == 0) nowMode = PlayerMode.gameover;
         //0以外はまた動けるようにactionモードに切り替える
         else nowMode = PlayerMode.action;
-
     }
 
     /// <summary>
@@ -228,13 +227,12 @@ public class RetroPL : MonoBehaviour
             //シーン移行の関数呼び出し
             StartCoroutine("GoResult");
         }
-        // transformを取得
+        //transformを取得
         Transform myTransform = this.transform;
         //リスポーン地点に移動する
         Vector2 pos = new Vector2(-8, -3.3f);
         //座標を設定
         myTransform.position = pos;
-        
     }
 
     /// <summary>
@@ -263,7 +261,5 @@ public class RetroPL : MonoBehaviour
     /// <returns></returns>
     public static int LevelCount() {
         return level;
-
     }
-
 }
