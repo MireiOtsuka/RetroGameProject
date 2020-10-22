@@ -137,7 +137,7 @@ public class RetroPL : MonoBehaviour
     /// <param name="collision"></param>
     void OnCollisionEnter2D(Collision2D collision)
     {
-        //岩との判定
+        //岩,鳥との判定
         if (collision.gameObject.tag == "Rock"&&nowMode==PlayerMode.action)
         {
             //HPを1引く
