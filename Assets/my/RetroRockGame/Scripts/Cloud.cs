@@ -35,7 +35,7 @@ public class Cloud : MonoBehaviour
         //アニメーションフラグをfalseにする
         cloudGo = false;
         //clouObjの子オブジェクト取得
-        thunderObj = transform.FindChild("ShotThunder").gameObject;
+        thunderObj = transform.Find("ShotThunder").gameObject;
         //子オブジェクトのthunder.cs取得
         thunder = thunderObj.GetComponent<Thunder>();
     }

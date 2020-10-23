@@ -137,13 +137,25 @@ public class RetroPL : MonoBehaviour
     /// <param name="collision"></param>
     void OnCollisionEnter2D(Collision2D collision)
     {
-        //岩,鳥との判定
+        //岩との判定
         if (collision.gameObject.tag == "Rock"&&nowMode==PlayerMode.action)
         {
             //HPを1引く
             HP--;
             //ぶつかったアニメーション再生
             anim.SetTrigger("rockDamage");
+            //PLAnimation()に飛ぶ
+            StartCoroutine("PLAnimation");
+            //ダメージ状態に移行
+            nowMode = PlayerMode.damage;
+        }
+        //隕石との判定
+        if (collision.gameObject.tag == "Fire" && nowMode == PlayerMode.action)
+        {
+            //HPを1引く
+            HP--;
+            //ぶつかったアニメーション再生
+            anim.SetTrigger("fireDamage");
             //PLAnimation()に飛ぶ
             StartCoroutine("PLAnimation");
             //ダメージ状態に移行
@@ -177,6 +189,19 @@ public class RetroPL : MonoBehaviour
             //ダメージ状態に移行
             nowMode = PlayerMode.damage;
         }
+        //鳥との判定
+        //ダメージをくらうと進路方向に滑るように移動してしまう
+        if (collision.gameObject.tag == "Bird" && nowMode == PlayerMode.action)
+        {
+            //HPを1引く
+            HP--;
+            //接触(岩の時と同じ)アニメーション再生
+            anim.SetTrigger("rockDamage");
+            //PLAnimation()に飛ぶ
+            StartCoroutine("PLAnimation");
+            //ダメージ状態に移行
+            nowMode = PlayerMode.damage;
+        }
     }
     /// <summary>
     /// 接地判定(地面についていないとき)
@@ -191,6 +216,10 @@ public class RetroPL : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// ダメージを受けた時に動きを止めるための処理
+    /// </summary>
+    /// <returns></returns>
     IEnumerator PLAnimation()
     {
         //ここのブロック全体のルーチンを止めてしまうため(アニメーションも止める)

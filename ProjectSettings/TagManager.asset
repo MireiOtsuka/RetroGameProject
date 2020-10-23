@@ -8,6 +8,7 @@ TagManager:
   - Rock
   - Thunder
   - Fire
+  - Bird
   layers:
   - Default
   - TransparentFX

@@ -27,7 +27,8 @@ public class Bird : MonoBehaviour
         //現在のレベルを取得
         level = RetroPL.LevelCount();
         //ランダムで隕石タイマーの時間を決める
-        fireSpans = Random.Range(fiMinSpans[level - 1], fiMaxSpans[level - 1]);
+        fireSpans = Random.Range
+            (fiMinSpans[level - 1], fiMaxSpans[level - 1]);
         //タイマー初期化
         fireNowTime = 0f;
     }
@@ -35,7 +36,8 @@ public class Bird : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //時間で動く
+        //鳥の処理ーーーーー
+        //時間で上下しながら左に動く
         var t = Time.time - 9;
         var x = t;
         var y = Mathf.Sin(2f * Mathf.PI * t);
@@ -47,11 +49,12 @@ public class Bird : MonoBehaviour
         {
             //タイマーリセット
             fireNowTime = 0;
-            //岩オブジェクト複製
+            //隕石オブジェクト複製
             GameObject go = Instantiate(firePrefab) as GameObject;
             go.transform.position = transform.position;
             //ランダムで隕石タイマーの時間を決める
-            fireSpans = Random.Range(fiMinSpans[level - 1], fiMaxSpans[level - 1]);
+            fireSpans = Random.Range
+                (fiMinSpans[level - 1], fiMaxSpans[level - 1]);
             
         }
     }
