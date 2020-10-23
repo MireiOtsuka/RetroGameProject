@@ -31,7 +31,6 @@ public class RetroPL : MonoBehaviour
         clear,     //ドアに入った時   clear=2
         gameover,  //ゲームオーバー   gameover=3;
         gameclear  //ゲームクリア     gameclear=4; と定数を持っている
-
     }
 
     /// <summary>

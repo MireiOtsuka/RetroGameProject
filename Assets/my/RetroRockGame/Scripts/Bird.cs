@@ -12,6 +12,7 @@ public class Bird : MonoBehaviour
     int level;//現在のレベル
     float fireSpans;//隕石が落ちる感覚
     float fireNowTime = 0;//隕石タイマー
+    float birdNowTime = 0;//鳥飛ぶタイマー
     float speed = 0.01f;//モンスターの速度
     //軌道関連
     //オブジェクトのRigidbody2DをKinematicにして自分で管理する
@@ -32,16 +33,26 @@ public class Bird : MonoBehaviour
         //タイマー初期化
         fireNowTime = 0f;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         //鳥の処理ーーーーー
         //時間で上下しながら左に動く
-        var t = Time.time - 9;
+        birdNowTime += Time.deltaTime;
+        var t = birdNowTime - 9;
         var x = t;
         var y = Mathf.Sin(2f * Mathf.PI * t);
         rigidbody.MovePosition(new Vector2(-x, y - 2f));
+        //この処理のせいで上下する動きがおんなじ
+        //そのため改善が必要
+        //Sin(2fのところを乱数にすれば改善か...?
+
+        //画面外処理(鳥)
+        if (transform.position.x < -10)
+        {
+            Destroy(gameObject);
+        }
+
 
         //隕石の処理ーーーーー
         this.fireNowTime += Time.deltaTime;
@@ -55,7 +66,6 @@ public class Bird : MonoBehaviour
             //ランダムで隕石タイマーの時間を決める
             fireSpans = Random.Range
                 (fiMinSpans[level - 1], fiMaxSpans[level - 1]);
-            
         }
     }
 

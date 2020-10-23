@@ -8,7 +8,8 @@ public class OpenDoor : MonoBehaviour
    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //リスポーン地点へ
+        if(collision.gameObject.tag == "Player")
+        //RetroPLで加点処理
         RetroPL.nowMode = RetroPL.PlayerMode.clear;
     }
 }

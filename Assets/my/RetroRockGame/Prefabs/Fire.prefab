@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 367013458107407671}
   - component: {fileID: 367013458107407668}
   - component: {fileID: 367013458107407669}
+  - component: {fileID: 7040901260424887418}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Fire
@@ -114,3 +115,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2863bab5ef9b60418b15c8a80f13a7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &7040901260424887418
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367013458107407626}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -8.2692936e-10, y: 0.0069367876}
+  serializedVersion: 2
+  m_Radius: 0.38891226
