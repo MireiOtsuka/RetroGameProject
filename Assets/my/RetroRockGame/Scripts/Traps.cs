@@ -11,7 +11,7 @@ public class Traps : MonoBehaviour
     [SerializeField] GameObject birdPrefab;//鳥オブジェクト
 
     float[] rockSpans = {1.0f,0.6f,0.4f};//岩が落ちる感覚(レベル別)
-    float[] birdSpans = {6f,5f,4f};//鳥が出現する感覚(レベル別)
+    float[] birdSpans = {12f,11f,10f};//鳥が出現する感覚(レベル別)
     float goRockNowTime = 0;//岩タイマー
     float goBirdNowTime = 0;//鳥タイマー
     

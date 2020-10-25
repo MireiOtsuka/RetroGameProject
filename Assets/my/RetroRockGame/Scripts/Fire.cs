@@ -10,11 +10,12 @@ public class Fire : MonoBehaviour
     void Start()
     {
     }
-
+   
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        //横に動く
+        //横に動く(画面の大きさで速度が変わってしまう)
+        //FixedUpdateで解消
         transform.Translate(0, -speed, 0);
 
         //画面外処理(隕石)
