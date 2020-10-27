@@ -11,7 +11,7 @@ public class RetroPL : MonoBehaviour
     Animator anim;
 
     public static int level = 1;//レベル
-    public static int[] clearCapa = { 1, 2, 20 };//レベル別クリア人数
+    public static int[] clearCapa = { 1, 2, 5 };//レベル別クリア人数
     public static int[] times = { 5, 10, 20 };//レベル別追加時間
 
     float speed = 5.0f;//移動のスピード
@@ -59,7 +59,8 @@ public class RetroPL : MonoBehaviour
         }
         else
         {   //レベル2以降はclearCountのみ初期化
-            //HPは引き継ぐ
+            //HPは+1をして引き継ぐ
+            HP++;
             //クリア人数初期化
             clearCount = 0;
             //制限時間を付け足す
@@ -69,6 +70,11 @@ public class RetroPL : MonoBehaviour
     
     void Update()
     {
+        //扉に入ったら関数よびだす
+        if (nowMode == PlayerMode.clear)
+        {
+            ModeClear();
+        }
         //ゲームオーバー
         if (HP == 0||time<=0)
         {   //ダメージを受けて死ぬ場合
@@ -81,11 +87,6 @@ public class RetroPL : MonoBehaviour
             }
             //シーン移行の関数呼び出し
             StartCoroutine("GoResult");
-        }
-        //扉に入ったら関数よびだす
-        if (nowMode == PlayerMode.clear)
-        {
-            ModeClear();
         }
         //アクション中以外は操作＆アニメーション切り替え不可
         if (nowMode != PlayerMode.action) return;

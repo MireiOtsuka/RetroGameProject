@@ -11,11 +11,17 @@ public class Result : MonoBehaviour
     [SerializeField] GameObject clearObj;
     [SerializeField] GameObject overObj;
     [SerializeField] Text socoreText;
+    //レベル
+    [SerializeField] GameObject level1;
+    [SerializeField] GameObject level2;
+    [SerializeField] GameObject level3;
+
     //コンティニューフラグ
     bool gameContinue;
     
     void Start()
     {
+        Debug.Log(RetroPL.nowMode);
         if (RetroPL.nowMode == RetroPL.PlayerMode.gameclear)
         {
             clearObj.SetActive(true);
@@ -27,6 +33,16 @@ public class Result : MonoBehaviour
         int resultSrore = RetroPL.ScoreCount();
         //scoreTextにリザルトスコアを表示
         socoreText.text = resultSrore.ToString();
+        //RetroPLからlevelの値を読み込む
+        int level = RetroPL.LevelCount();
+        //一回初期化
+        level1.SetActive(false);
+        level2.SetActive(false);
+        level3.SetActive(false);
+        //レベル別表示
+        if (level == 2) level1.SetActive(true);
+        else if (level == 3) level2.SetActive(true);
+        else level3.SetActive(true);
     }
 
     // Update is called once per frame

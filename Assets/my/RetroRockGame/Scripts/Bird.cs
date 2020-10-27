@@ -14,6 +14,7 @@ public class Bird : MonoBehaviour
     float fireNowTime = 0;//隕石タイマー
     float birdNowTime = 0;//鳥飛ぶタイマー
     float speed;//モンスターの速度
+    float hight;//モンスターの飛ぶ高さ
     //軌道関連
     //オブジェクトのRigidbody2DをKinematicにして自分で管理する
     private new Rigidbody2D rigidbody;
@@ -32,8 +33,11 @@ public class Bird : MonoBehaviour
             (fiMinSpans[level - 1], fiMaxSpans[level - 1]);
         //ランダムでモンスターのスピードを決める
         speed = Random.Range(0.5f, 0.2f);
+        //飛ぶ高さ
+        hight = Random.Range(1f, 1.7f);
         //タイマー初期化
         fireNowTime = 0f;
+        Debug.Log("高さ：" + hight);
     }
     
     void Update()
@@ -43,11 +47,13 @@ public class Bird : MonoBehaviour
         birdNowTime += Time.deltaTime;//左に動かす
         var t = birdNowTime - 9;//左に動かす
         var x = t;//左に動かす
-        var y = Mathf.Sin(speed * Mathf.PI * t);//上下に動かす
+        var y = Mathf.Sin(speed * Mathf.PI * t)*hight;//上下に動かす
         rigidbody.MovePosition(new Vector2(-x, y - 2f));
         //この処理のせいで上下する動きがおんなじ
         //そのため改善が必要
         //Sin(2fのところを乱数にすれば改善か...?
+        //2020.10.27改善
+        //sinに数字を掛けることで縦幅を変えることに成功
 
         //画面外処理(鳥)
         if (transform.position.x < -10)

@@ -1368,10 +1368,10 @@ RectTransform:
   m_Father: {fileID: 602238061}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -727, y: 368}
-  m_SizeDelta: {x: -1500, y: -800}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 73, y: -82.5}
+  m_SizeDelta: {x: 100, y: 101}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &438224019
 PrefabInstance:
@@ -1643,7 +1643,7 @@ GameObject:
   - component: {fileID: 571780358}
   - component: {fileID: 571780357}
   m_Layer: 5
-  m_Name: Image_l
+  m_Name: Image_e
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1687,7 +1687,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300022, guid: 388e8eb6de557964999d88f8d42114db, type: 3}
+  m_Sprite: {fileID: 21300008, guid: 388e8eb6de557964999d88f8d42114db, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2251,7 +2251,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778798189}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 255.43832, y: -73.64912, z: -160.55013}
+  m_LocalPosition: {x: 311, y: -73.64912, z: -160.55013}
   m_LocalScale: {x: 1.4285715, y: 1.4285715, z: 1}
   m_Children:
   - {fileID: 2129588061}
@@ -2608,7 +2608,7 @@ GameObject:
   - component: {fileID: 872933643}
   - component: {fileID: 872933642}
   m_Layer: 5
-  m_Name: Image_l (1)
+  m_Name: Image_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2630,7 +2630,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 166.6, y: 0}
+  m_AnchoredPosition: {x: 221, y: 0}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &872933642
@@ -2928,7 +2928,7 @@ GameObject:
   - component: {fileID: 1191958199}
   - component: {fileID: 1191958198}
   m_Layer: 5
-  m_Name: Image_e
+  m_Name: Image_v
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2972,7 +2972,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300008, guid: 388e8eb6de557964999d88f8d42114db, type: 3}
+  m_Sprite: {fileID: 21300042, guid: 388e8eb6de557964999d88f8d42114db, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5598,7 +5598,7 @@ GameObject:
   - component: {fileID: 1625428671}
   - component: {fileID: 1625428670}
   m_Layer: 5
-  m_Name: Image_v
+  m_Name: Image_e
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5642,7 +5642,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300042, guid: 388e8eb6de557964999d88f8d42114db, type: 3}
+  m_Sprite: {fileID: 21300008, guid: 388e8eb6de557964999d88f8d42114db, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6127,6 +6127,9 @@ MonoBehaviour:
   capa: {fileID: 112842979}
   clearPerson: {fileID: 672350613}
   score: {fileID: 721183370}
+  level3: {fileID: 281761639}
+  level2: {fileID: 1911797269}
+  level1: {fileID: 2129588060}
   life4: {fileID: 281855648}
   life3: {fileID: 2014833292}
   life2: {fileID: 337600134}

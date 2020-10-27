@@ -14,7 +14,10 @@ public class UImain : MonoBehaviour
     [SerializeField] Text clearPerson;
     //スコア
     [SerializeField] Text score;
-
+    //レベル表示
+    [SerializeField] GameObject level3;
+    [SerializeField] GameObject level2;
+    [SerializeField] GameObject level1;
     //ライフ表示
     [SerializeField] GameObject life4;
     [SerializeField] GameObject life3;
@@ -26,6 +29,16 @@ public class UImain : MonoBehaviour
     {
         //定員表示
         capa.text = RetroPL.clearCapa[(RetroPL.level) - 1].ToString();
+        //現在のレベル
+        int level = RetroPL.LevelCount();
+        //初期化
+        level1.SetActive(false);
+        level2.SetActive(false);
+        level3.SetActive(false);
+        //レベル表示
+        if (level == 1) level1.SetActive(true);
+        else if (level == 2) level2.SetActive(true);
+        else level3.SetActive(true);
     }
 
     // Update is called once per frame
