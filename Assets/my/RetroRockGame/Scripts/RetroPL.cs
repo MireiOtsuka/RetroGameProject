@@ -16,7 +16,7 @@ public class RetroPL : MonoBehaviour
 
     float speed = 5.0f;//移動のスピード
     bool isGround = false;//接地判定
-    public static float time = 100;//制限時間
+    public static float time = 30;//制限時間
     public static int HP = 4;//HP
     public static int clearCount = 0;//クリアした人数
     public static int score = 0;//スコア
@@ -80,11 +80,12 @@ public class RetroPL : MonoBehaviour
         {   //ダメージを受けて死ぬ場合
             if (HP == 0)
             {
-                //レベル1に戻す
-                level = 1;
+                //アニメーション
                 //すぐに移行はしてほしくない
                 anim.SetBool("GameOver", true);
             }
+            //レベル1に戻す
+            level = 1;
             //シーン移行の関数呼び出し
             StartCoroutine("GoResult");
         }

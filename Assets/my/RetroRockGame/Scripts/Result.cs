@@ -22,7 +22,9 @@ public class Result : MonoBehaviour
     void Start()
     {
         Debug.Log(RetroPL.nowMode);
-        if (RetroPL.nowMode == RetroPL.PlayerMode.gameclear)
+        //滑り込みでクリアしてもいいように
+        if (RetroPL.nowMode == RetroPL.PlayerMode.gameclear||
+            RetroPL.nowMode == RetroPL.PlayerMode.action)
         {
             clearObj.SetActive(true);
         }else if (RetroPL.nowMode == RetroPL.PlayerMode.gameover)
@@ -68,6 +70,8 @@ public class Result : MonoBehaviour
         //Invoke("呼び出したい関数",何秒後か)でX秒後に関数が呼び出される
         Invoke("SceneChange", 0.5f);
         gameContinue = false;
+        //レベルを1に戻す
+        RetroPL.level = 1;
     }
     void SceneChange()
     {
