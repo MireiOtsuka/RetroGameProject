@@ -9,6 +9,9 @@ public class RetroPL : MonoBehaviour
 
     Rigidbody2D rb2d;
     Animator anim;
+    AudioSource audio;
+
+    public AudioClip DamageHiyoaudio;//岩や鳥のダメージ音
 
     public static int level = 1;//レベル
     public static int[] clearCapa = { 1, 2, 5 };//レベル別クリア人数
@@ -43,6 +46,7 @@ public class RetroPL : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
         
         //ゲームスタート時アクションモードでスタート
         nowMode = PlayerMode.action;
@@ -143,6 +147,8 @@ public class RetroPL : MonoBehaviour
         {
             //HPを1引く
             HP--;
+            //サウンド再生
+            audio.PlayOneShot(DamageHiyoaudio);
             //ぶつかったアニメーション再生
             anim.SetTrigger("rockDamage");
             //PLAnimation()に飛ぶ

@@ -5,10 +5,11 @@ using UnityEngine;
 public class Cloud : MonoBehaviour
 {
     //雲の処理
-
     Animator anim;
     Thunder thunder;//Thunder.cs取得
+    AudioSource audio;
     private GameObject thunderObj;//雷(子オブジェクト)
+    public AudioClip sound;//雷音源
 
     //ランダムで雷タイマーの時間の範囲を格納するレベル別配列
     float[] thMinSpans = { 5f, 3.5f, 2f };//最小値
@@ -26,6 +27,7 @@ public class Cloud : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
         //現在のレベルを取得
         level = RetroPL.LevelCount();
         //ランダムで雷タイマーの時間を決める
@@ -59,6 +61,8 @@ public class Cloud : MonoBehaviour
             cloudSpans = Random.Range(thMinSpans[level - 1], thMaxSpans[level - 1]);
             //Shot関数呼び出し
             StartCoroutine("Shot");
+            //音再生
+            audio.PlayOneShot(sound);
         }
         //雷雲アニメーション
         if (cloudAnimFlag)

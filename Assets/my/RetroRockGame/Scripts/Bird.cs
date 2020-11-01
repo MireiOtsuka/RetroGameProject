@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Bird : MonoBehaviour
 {
+    AudioSource audio;
     //鳥の移動スクリプト
     [SerializeField] GameObject firePrefab;//隕石オブジェクト
+    public AudioClip sound;//炎の音
     //ランダムで雷タイマーの時間の範囲を格納するレベル別配列
     float[] fiMinSpans = { 5f, 4f, 3f };//最小値
     float[] fiMaxSpans = { 7f, 6f, 5f };//最大値
@@ -21,6 +23,7 @@ public class Bird : MonoBehaviour
 
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         rigidbody = GetComponent<Rigidbody2D>();
         //重力なしに設定
         rigidbody.gravityScale = 0.0f;
@@ -74,6 +77,8 @@ public class Bird : MonoBehaviour
             //ランダムで隕石タイマーの時間を決める
             fireSpans = Random.Range
                 (fiMinSpans[level - 1], fiMaxSpans[level - 1]);
+            //サウンド再生
+            audio.PlayOneShot(sound);
         }
     }
 
