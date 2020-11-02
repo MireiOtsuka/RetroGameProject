@@ -10,6 +10,8 @@ public class Result : MonoBehaviour
     // ゲームのリザルト画面管理
     [SerializeField] GameObject clearObj;
     [SerializeField] GameObject overObj;
+    [SerializeField] GameObject allClearObj;
+    [SerializeField] GameObject reTryButtonObj;
     [SerializeField] Text socoreText;
     //レベル
     [SerializeField] GameObject level1;
@@ -21,9 +23,21 @@ public class Result : MonoBehaviour
     
     void Start()
     {
-        Debug.Log(RetroPL.nowMode);
+        //一回初期化
+        allClearObj.SetActive(false);
+        clearObj.SetActive(false);
+        overObj.SetActive(false);
+        reTryButtonObj.SetActive(true);
+        //RetroPLからlevelの値を読み込む
+        int level = RetroPL.LevelCount();
         //滑り込みでクリアしてもいいように
-        if (RetroPL.nowMode == RetroPL.PlayerMode.gameclear||
+        if (RetroPL.nowMode == RetroPL.PlayerMode.gameclear&&level==4 ||
+            RetroPL.nowMode == RetroPL.PlayerMode.action && level == 4)
+        {
+            allClearObj.SetActive(true);
+            reTryButtonObj.SetActive(false);
+        }
+        else if (RetroPL.nowMode == RetroPL.PlayerMode.gameclear||
             RetroPL.nowMode == RetroPL.PlayerMode.action)
         {
             clearObj.SetActive(true);
@@ -35,8 +49,6 @@ public class Result : MonoBehaviour
         int resultSrore = RetroPL.ScoreCount();
         //scoreTextにリザルトスコアを表示
         socoreText.text = resultSrore.ToString();
-        //RetroPLからlevelの値を読み込む
-        int level = RetroPL.LevelCount();
         //一回初期化
         level1.SetActive(false);
         level2.SetActive(false);
