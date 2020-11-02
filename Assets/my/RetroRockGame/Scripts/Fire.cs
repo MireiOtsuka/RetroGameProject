@@ -19,7 +19,8 @@ public class Fire : MonoBehaviour
         transform.Translate(0, -speed, 0);
 
         //画面外処理(隕石)
-        if (transform.position.x < -10)
+        if (transform.position.x < -10|| 
+            transform.position.x > 10)
         {
             Destroy(gameObject);
         }
