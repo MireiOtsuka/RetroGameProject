@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class Result : MonoBehaviour
 {
+    Hanabi hanabi;
+
     // ゲームのリザルト画面管理
     [SerializeField] GameObject clearObj;
     [SerializeField] GameObject overObj;
@@ -17,7 +19,7 @@ public class Result : MonoBehaviour
     [SerializeField] GameObject level1;
     [SerializeField] GameObject level2;
     [SerializeField] GameObject level3;
-
+    
     //コンティニューフラグ
     bool gameContinue;
     
@@ -57,6 +59,7 @@ public class Result : MonoBehaviour
         if (level == 2) level1.SetActive(true);
         else if (level == 3) level2.SetActive(true);
         else level3.SetActive(true);
+        
     }
 
     // Update is called once per frame
