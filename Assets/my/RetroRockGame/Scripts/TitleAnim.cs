@@ -9,6 +9,7 @@ public class TitleAnim : MonoBehaviour
     Animator anim;
     float nowTime = 0;//タイマー
     bool animFlag = true;//アニメーションフラグ
+    bool oneFlag = true;//一度きりのフラグ
     float animTime = 0;//アニメーションタイマー
     //岩アニメーションーーーー
     [SerializeField] GameObject rock;
@@ -28,49 +29,59 @@ public class TitleAnim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        nowTime += Time.deltaTime;
-        if (nowTime >= 60)
+        //一回だけアニメーション再生
+        if (oneFlag)
         {
-            //タイマーリセット
-            nowTime = 0;
-            //アニメーション発動
-            anim.SetTrigger("Start");
-            //投下フラグon
-            rockFlag = true;
-            RFlag = true;
-            LFlag = true;
-            animFlag = true;
-        }
-        //投下開始処理--------------------
-        if (animFlag)
-        {
-            //タイマー始動
-            animTime += Time.deltaTime;
-        }
-        if (animTime >= 2.4f && RFlag)
-        {
-            RFlag = false;
-            //炎オブジェクト複製
-            GameObject go = Instantiate(rightFire) as GameObject;
-            //投下
-            go.transform.position = new Vector3(5.5f, -3, 0);
-        }
-        if (animTime >= 4.1f && LFlag)
-        {
-            LFlag = false;
-            //炎オブジェクト複製
-            GameObject go = Instantiate(leftFire) as GameObject;
-            //投下
-            go.transform.position = new Vector3(-8.25f, -3.2f, 0);
-        }
-        if (animTime >= 8f && rockFlag)
-        {
-            rockFlag = false;
-            animTime = 0;
-            //岩オブジェクト複製
-            GameObject go = Instantiate(rock) as GameObject;
-            //投下
-            go.transform.position = new Vector3(4.5f, 5, 0);
+            nowTime += Time.deltaTime;
+            if (nowTime >= 20)
+            {
+                //タイマーリセット
+                nowTime = 0;
+                //アニメーション発動
+                anim.SetTrigger("Start");
+                //投下フラグon
+                rockFlag = true;
+                RFlag = true;
+                LFlag = true;
+                animFlag = true;
+            }
+            //投下開始処理--------------------
+            if (animFlag)
+            {
+                //タイマー始動
+                animTime += Time.deltaTime;
+            }
+            if (animTime >= 2.4f && RFlag)
+            {
+                RFlag = false;
+                //炎オブジェクト複製
+                GameObject go = Instantiate(rightFire) as GameObject;
+                //投下
+                go.transform.position = new Vector3(5.5f, -3, 0);
+            }
+            if (animTime >= 4.1f && LFlag)
+            {
+                LFlag = false;
+                //炎オブジェクト複製
+                GameObject go = Instantiate(leftFire) as GameObject;
+                //投下
+                go.transform.position = new Vector3(-8.25f, -3.2f, 0);
+            }
+            if (animTime >= 8f && rockFlag)
+            {
+                rockFlag = false;
+                //アニメーションタイマー初期化
+                animTime = 0;
+                //アニメーションフラグfalse
+                animFlag = false;
+                //総合タイマーリセット
+                nowTime = 0;
+                //岩オブジェクト複製
+                GameObject go = Instantiate(rock) as GameObject;
+                //投下
+                go.transform.position = new Vector3(4.5f, 5, 0);
+                oneFlag = false;
+            }
         }
     }
 }
