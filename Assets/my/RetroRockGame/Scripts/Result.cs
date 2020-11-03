@@ -7,14 +7,14 @@ using UnityEngine.UI;
 
 public class Result : MonoBehaviour
 {
-    Hanabi hanabi;
-
     // ゲームのリザルト画面管理
-    [SerializeField] GameObject clearObj;
-    [SerializeField] GameObject overObj;
-    [SerializeField] GameObject allClearObj;
-    [SerializeField] GameObject reTryButtonObj;
-    [SerializeField] Text socoreText;
+    [SerializeField] GameObject clearObj;//クリアオブジェクト
+    [SerializeField] GameObject clearHanabiObj;//クリアオブジェクト
+    [SerializeField] GameObject overObj;//ゲームオーバーオブジェクト
+    [SerializeField] GameObject allClearObj;//全クリオブジェクト
+    [SerializeField] GameObject allClearHanabiObj;//全クリオブジェクト
+    [SerializeField] GameObject reTryButtonObj;//リトライボタン
+    [SerializeField] Text socoreText;//スコアテキスト
     //レベル
     [SerializeField] GameObject level1;
     [SerializeField] GameObject level2;
@@ -29,6 +29,8 @@ public class Result : MonoBehaviour
         allClearObj.SetActive(false);
         clearObj.SetActive(false);
         overObj.SetActive(false);
+        allClearHanabiObj.SetActive(false);
+        clearHanabiObj.SetActive(false);
         reTryButtonObj.SetActive(true);
         //RetroPLからlevelの値を読み込む
         int level = RetroPL.LevelCount();
@@ -37,12 +39,14 @@ public class Result : MonoBehaviour
             RetroPL.nowMode == RetroPL.PlayerMode.action && level == 4)
         {
             allClearObj.SetActive(true);
+            allClearHanabiObj.SetActive(true);
             reTryButtonObj.SetActive(false);
         }
         else if (RetroPL.nowMode == RetroPL.PlayerMode.gameclear||
             RetroPL.nowMode == RetroPL.PlayerMode.action)
         {
             clearObj.SetActive(true);
+            clearHanabiObj.SetActive(true);
         }else if (RetroPL.nowMode == RetroPL.PlayerMode.gameover)
         {
             overObj.SetActive(true);

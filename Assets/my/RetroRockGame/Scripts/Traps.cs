@@ -42,7 +42,6 @@ public class Traps : MonoBehaviour
         this.goBirdNowTime += Time.deltaTime;
         if (goBirdNowTime > birdSpans[level - 1])
         {
-            Debug.Log("鳥が出現！");
             //タイマーリセット
             goBirdNowTime = 0;
             //鳥オブジェクト複製

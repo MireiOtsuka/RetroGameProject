@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePrefab: {fileID: 367013458107407626, guid: 196f738351f376f43b98e2d1c2ad38a6,
     type: 3}
-  sound: {fileID: 8300000, guid: 9d29ddfec7de15143ae193466c4dab30, type: 3}
+  sound: {fileID: 8300000, guid: f6ebc9965a2d4fc418f647b286c3a8ca, type: 3}
 --- !u!50 &8145832547470740333
 Rigidbody2D:
   serializedVersion: 4
@@ -169,8 +169,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
-  m_Pitch: 1.7
+  m_Volume: 1
+  m_Pitch: 0.5
   Loop: 0
   Mute: 0
   Spatialize: 0

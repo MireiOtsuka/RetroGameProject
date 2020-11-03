@@ -14,6 +14,8 @@ public class RetroPL : MonoBehaviour
     public AudioClip DamageHiyoaudio;//岩や鳥のダメージ音
     public AudioClip DamageBouaudio;//炎のダメージ音
     public AudioClip DamageBiriaudio;//雷のダメージ音
+    public AudioClip clearaudio;//扉に入った音
+    public AudioClip jumpaudio;//ジャンプ音
 
     public static int level = 1;//レベル
     public static int[] clearCapa = { 1, 1, 1 };//レベル別クリア人数
@@ -134,6 +136,8 @@ public class RetroPL : MonoBehaviour
         {
             //ジャンプ
             rb2d.AddForce(Vector2.up * 300f);
+            //ジャンプ音再生
+            audio.PlayOneShot(jumpaudio);
         }
     }
 
@@ -254,6 +258,8 @@ public class RetroPL : MonoBehaviour
     {
         //クリアカウントプラス
         clearCount++;
+        //入室効果音再生
+        audio.PlayOneShot(clearaudio);
         //スコア加算1人につき100点*level
         score += 100 * level;
         //モード変更

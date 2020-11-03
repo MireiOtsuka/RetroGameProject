@@ -3036,6 +3036,8 @@ MonoBehaviour:
   DamageHiyoaudio: {fileID: 8300000, guid: 931f3a1ff1cc70349a6b47c61ec3a60f, type: 3}
   DamageBouaudio: {fileID: 8300000, guid: cf7a7ba2902001541aa6a18d9ba9900d, type: 3}
   DamageBiriaudio: {fileID: 8300000, guid: f9ee4e5b51e4f684c9f5798e26a52edd, type: 3}
+  clearaudio: {fileID: 8300000, guid: 52423c8806e69c84d970325fef43b4a9, type: 3}
+  jumpaudio: {fileID: 8300000, guid: 63e16f84e5db6914fbec1b9ade55e8a7, type: 3}
 --- !u!82 &1091955752
 AudioSource:
   m_ObjectHideFlags: 0

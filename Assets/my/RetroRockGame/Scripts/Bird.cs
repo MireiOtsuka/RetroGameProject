@@ -40,7 +40,6 @@ public class Bird : MonoBehaviour
         hight = Random.Range(1f, 1.7f);
         //タイマー初期化
         fireNowTime = 0f;
-        Debug.Log("高さ：" + hight);
     }
     
     void Update()
