@@ -12,7 +12,8 @@ public class RetroPL : MonoBehaviour
     AudioSource audio;
 
     public AudioClip DamageHiyoaudio;//岩や鳥のダメージ音
-    public AudioClip DamageBouaudio;//雷や炎のダメージ音
+    public AudioClip DamageBouaudio;//炎のダメージ音
+    public AudioClip DamageBiriaudio;//雷のダメージ音
 
     public static int level = 1;//レベル
     public static int[] clearCapa = { 1, 1, 1 };//レベル別クリア人数
@@ -192,6 +193,8 @@ public class RetroPL : MonoBehaviour
         {
             //HPを1引く
             HP--;
+            //サウンド再生
+            audio.PlayOneShot(DamageBiriaudio);
             //うたれたアニメーション再生
             anim.SetTrigger("thunderDamage");
             //PLAnimation()に飛ぶ
@@ -205,6 +208,8 @@ public class RetroPL : MonoBehaviour
         {
             //HPを1引く
             HP--;
+            //サウンド再生
+            audio.PlayOneShot(DamageHiyoaudio);
             //接触(岩の時と同じ)アニメーション再生
             anim.SetTrigger("rockDamage");
             //PLAnimation()に飛ぶ

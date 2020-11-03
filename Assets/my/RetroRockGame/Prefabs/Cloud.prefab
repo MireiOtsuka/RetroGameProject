@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 7688324284310370246}
   - component: {fileID: 7688324284310370264}
   - component: {fileID: -1691335089371864639}
-  - component: {fileID: -4921975983872185504}
+  - component: {fileID: -5682434188187738737}
   m_Layer: 0
   m_Name: Cloud
   m_TagString: Untagged
@@ -332,7 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: 66561327be0a1794585108b33e2d7f9b, type: 3}
---- !u!82 &-4921975983872185504
+--- !u!82 &-5682434188187738737
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -343,8 +343,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
+  m_PlayOnAwake: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
