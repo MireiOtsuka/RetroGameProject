@@ -18,8 +18,8 @@ public class RetroPL : MonoBehaviour
     public AudioClip jumpaudio;//ジャンプ音
 
     public static int level = 1;//レベル
-    public static int[] clearCapa = { 1, 1, 1 };//レベル別クリア人数
-    public static int[] times = { 5, 10, 20 };//レベル別追加時間
+    public static int[] clearCapa = { 1, 2, 3 };//レベル別クリア人数
+    public static int[] times = { 10, 20, 40 };//レベル別追加時間
 
     float speed = 5.0f;//移動のスピード
     bool isGround = false;//接地判定

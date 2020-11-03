@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/my/RetroRockGame/Scene/Start_Retro2D.unity
     guid: baea69bb5870c834792f266c2e2e33b6
   - enabled: 1
-    path: Assets/my/RetroRockGame/Scene/Result_Retro2D.unity
-    guid: c3f13834d01265743be74853b6054ffb
-  - enabled: 1
     path: Assets/my/RetroRockGame/Scene/Game_Retro2D.unity
     guid: 18991ec0344a5a04a9a8518dbb6ff522
+  - enabled: 1
+    path: Assets/my/RetroRockGame/Scene/Result_Retro2D.unity
+    guid: c3f13834d01265743be74853b6054ffb
   m_configObjects: {}
